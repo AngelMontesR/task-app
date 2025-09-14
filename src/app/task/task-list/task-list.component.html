@@ -1,7 +1,10 @@
-<div class="container">
-  <h1>Lista de Tareas</h1>
-  <div class="bg-amber-600">
-
-  </div>
-
-</div>
+@for (task of tasks; track task.id) {
+  <app-task-item
+    [task]="task"
+    (toggleCompleted)="onToggleCompleted(task.id)"
+    (delete)="onDeleteTask(task.id)"
+    (update)="onUpdateTask(task.id, $event)"
+  ></app-task-item>
+} @empty {
+  <p>No hay tareas pendientes.</p>
+}

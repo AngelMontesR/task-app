@@ -1,1 +1,31 @@
-<p>task-item works!</p>
+<mat-list-item class="task-item">
+  <div class="task-content">
+    @if (isEditing) {
+      <mat-form-field appearance="outline" class="edit-input">
+        <input matInput [(ngModel)]="editedTaskName" (keyup.enter)="saveChanges()" />
+      </mat-form-field>
+    } @else {
+      <mat-checkbox [checked]="task.completed" (change)="onToggleCompleted()">
+        <span [class.completed-task]="task.completed">{{ task.name }}</span>
+      </mat-checkbox>
+    }
+  </div>
+
+  <div class="actions">
+    @if (isEditing) {
+      <button mat-icon-button (click)="saveChanges()">
+        <mat-icon>save</mat-icon>
+      </button>
+      <button mat-icon-button (click)="toggleEditMode()">
+        <mat-icon>cancel</mat-icon>
+      </button>
+    } @else {
+      <button mat-icon-button (click)="toggleEditMode()">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button (click)="onDelete()">
+        <mat-icon>delete</mat-icon>
+      </button>
+    }
+  </div>
+</mat-list-item>

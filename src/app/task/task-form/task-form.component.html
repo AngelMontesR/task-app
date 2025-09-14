@@ -1,1 +1,7 @@
-<p>task-form works!</p>
+<div class="task-form-container">
+  <mat-form-field appearance="outline" class="task-input">
+    <mat-label>Agregar una nueva tarea</mat-label>
+    <input matInput [(ngModel)]="newTaskName" (keyup.enter)="addTask()" />
+  </mat-form-field>
+  <button mat-flat-button color="primary" (click)="addTask()">Agregar</button>
+</div>
