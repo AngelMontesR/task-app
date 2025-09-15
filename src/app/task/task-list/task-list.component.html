@@ -1,8 +1,11 @@
 <mat-list>
   <h2 class="section-title">Pendientes</h2>
   @for (task of pendingTasks; track task.id) {
-  <app-task-item [task]="task" (toggleCompleted)="onToggleCompleted(task.id)"
-    (delete)="onDeleteTask(task.id)"></app-task-item>
+  <app-task-item [task]="task"
+    (toggleCompleted)="onToggleCompleted(task.id)"
+    (delete)="onDeleteTask(task.id)"
+    (update)="onUpdateTask(task, $event)"
+    ></app-task-item>
   } @empty {
   <p class="no-tasks-message">No hay tareas pendientes.</p>
   }
@@ -16,8 +19,10 @@
 <mat-list>
   <h2 class="section-title">Completadas</h2>
   @for (task of completedTasks; track task.id) {
-  <app-task-item [task]="task" (toggleCompleted)="onToggleCompleted(task.id)"
-    (delete)="onDeleteTask(task.id)"></app-task-item>
+  <app-task-item [task]="task"
+    (toggleCompleted)="onToggleCompleted(task.id)"
+    (delete)="onDeleteTask(task.id)"
+    (update)="onUpdateTask(task, $event)"></app-task-item>
   }
 </mat-list>
 }

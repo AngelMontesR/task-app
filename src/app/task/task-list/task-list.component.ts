@@ -12,11 +12,13 @@ import { SharedModule } from '../../shared/angular-material/angular-material.mod
   styleUrl: './task-list.component.css',
 })
 export class TaskListComponent implements OnInit {
+  // Listas de tareas pendientes y completadas
   pendingTasks: Task[] = [];
   completedTasks: Task[] = [];
 
   constructor(private taskService: TaskService) {}
 
+  // Inicialización del componente y suscripción a los cambios en las tareas
   ngOnInit(): void {
     this.taskService.tasks$.subscribe((tasks) => {
       this.pendingTasks = tasks.filter((task) => !task.completed);
@@ -24,11 +26,19 @@ export class TaskListComponent implements OnInit {
     });
   }
 
+  // Método que llama al servicio para actualizar una tarea
   onToggleCompleted(id: number): void {
     this.taskService.toggleCompleted(id);
   }
 
+  // Método que llama al servicio para eliminar una tarea
   onDeleteTask(id: number): void {
     this.taskService.deleteTask(id);
+  }
+
+  // Método que llama al servicio para actualizar una tarea
+  onUpdateTask(taskToUpdate: Task, newName: string): void {
+    const updatedTask = { ...taskToUpdate, name: newName };
+    this.taskService.updateTask(updatedTask);
   }
 }

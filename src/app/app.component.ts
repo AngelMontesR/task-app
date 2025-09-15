@@ -9,5 +9,4 @@ import { TaskFormComponent } from './task/task-form/task-form.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'task-app';
 }

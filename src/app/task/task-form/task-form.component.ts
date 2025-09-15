@@ -23,10 +23,11 @@ export class TaskFormComponent {
 
   constructor(private taskService: TaskService) {}
 
+  // Método que añade una nueva tarea usando el servicio
   addTask(): void {
     if (this.newTaskName.trim()) {
       this.taskService.addTask(this.newTaskName);
-      this.newTaskName = ''; // Limpiamos el campo después de agregar
+      this.newTaskName = '';
     }
   }
 }

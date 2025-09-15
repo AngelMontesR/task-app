@@ -8,7 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 
-
+// Módulo compartido para importar y exportar componentes de Angular Material
 @NgModule({
   declarations: [],
   imports: [
