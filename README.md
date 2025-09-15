@@ -1,59 +1,85 @@
-# TaskApp
+# 📝 Mi Lista de Tareas
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.16.
+Applicación de lista de tareas construida con Angular y Angular Material. Gestiona tus tareas diarias de manera eficiente con una interfaz limpia y moderna.
 
-## Development server
+## 🚀 Características
 
-To start a local development server, run:
+* **Añadir Tareas**: Agrega nuevas tareas a tu lista.
+* **Marcar como Completada**: Marca las tareas como completadas.
+* **Editar Tareas**: Modifica el nombre de una tarea existente.
+* **Eliminar Tareas**: Elimina tareas que ya no necesitas.
+* **Persistencia de Datos**: Tus tareas se guardan en el navegador, por lo que no las perderás al recargar la página.
 
-```bash
-ng serve
+
+## 🛠️ Tecnologías
+
+* **Angular**: El framework principal para la aplicación.
+* **Angular Material**: Para componentes de interfaz de usuario limpios y profesionales.
+* **TypeScript**: El lenguaje de programación utilizado.
+* **CSS / HTML**: Para la estructura y el estilo de la aplicación.
+* **Local Storage**: Para la persistencia de datos.
+
+
+## ⚙️ Instalación y Uso
+
+Sigue estos pasos para tener una copia local del proyecto en funcionamiento.
+
+### Requisitos Previos
+
+* [Node.js](https://nodejs.org/) (versión 16.x o superior)
+* [Angular CLI](https://angular.io/cli) (se recomienda la última versión)
+
+### Pasos
+
+1.  Clona el repositorio:
+    ```bash
+    git clone https://github.com/AngelMontesR/task-app
+    cd task-app
+    ```
+
+2.  Instala las dependencias:
+    ```bash
+    npm install
+    ```
+
+3.  Ejecuta la aplicación:
+    ```bash
+    ng serve
+    ```
+
+4.  Abre tu navegador y navega a `http://localhost:4200/`.
+
+
+## 📁 Estructura del Proyecto
+
+El proyecto sigue una arquitectura modular basada en características (Feature-Based Modular Architecture) combinada con el patrón de Servicios y Componentes de Angular.
+
+Modularidad: La aplicación está organizada por funcionalidades. El directorio task/ contiene todos los componentes y la lógica relacionados con las tareas. Esto mantiene el código limpio, escalable y fácil de mantener.
+
+Servicios: Un servicio (TaskService) actúa como el único origen de la verdad. Se encarga de la lógica de negocio (añadir, editar, eliminar) y la persistencia de datos, aislando estas responsabilidades de los componentes.
+
+Componentes: Los componentes (task-form, task-list, task-item) se centran en la interfaz de usuario. Interactúan con el servicio para obtener y manipular los datos, pero no se comunican directamente entre ellos.
+
 ```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+.
+├── src/                          # Directorio de la aplicación
+│   ├── app/
+│   │   ├── interfaces/           # Modelos de datos y tipado
+│   │   │   └── task.interface.ts
+│   │   ├── services/             # Servicios de la aplicación
+│   │   │   └── task.service.ts
+│   │   ├── shared/               # Módulos y componentes reutilizables
+│   │   │   └── angular-material/
+│   │   │       └── angular-material.module.ts # Módulo para importar componentes de Material
+│   │   ├── task/                 # Componentes de la lista de tareas
+│   │   │   ├── task-form/        # Formulario para añadir tareas
+│   │   │   │   ├── task-form.component.ts
+│   │   │   │   └── ...
+│   │   │   ├── task-item/        # Componente para mostrar una sola tarea
+│   │   │   │   ├── task-item.component.ts
+│   │   │   │   └── ...
+│   │   │   └── task-list/        # Componente para mostrar la lista de tareas
+│   │   │       ├── task-list.component.ts
+│   │   │       └── ...
+│   │   └── app.component.ts      # Componente raíz de la aplicación
 ```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
