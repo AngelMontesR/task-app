@@ -1,10 +1,13 @@
-@for (task of tasks; track task.id) {
-  <app-task-item
-    [task]="task"
-    (toggleCompleted)="onToggleCompleted(task.id)"
-    (delete)="onDeleteTask(task.id)"
-    (update)="onUpdateTask(task.id, $event)"
-  ></app-task-item>
-} @empty {
-  <p>No hay tareas pendientes.</p>
-}
+<mat-card-header>
+  <mat-card-title>Pendientes</mat-card-title>
+</mat-card-header>
+<mat-card-content>
+  <mat-list>
+    @for (task of tasks; track task.id) {
+    <app-task-item [task]="task" (toggleCompleted)="onToggleCompleted(task.id)"
+      (delete)="onDeleteTask(task.id)"></app-task-item>
+    } @empty {
+    <p>No hay tareas pendientes.</p>
+    }
+  </mat-list>
+</mat-card-content>
