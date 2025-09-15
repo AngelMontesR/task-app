@@ -1,0 +1,26 @@
+.task-item {
+  width: 100%;
+}
+
+.task-edit-mode-wrapper,
+.task-view-mode-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.edit-input-field {
+  flex-grow: 1; /* Allows the input to take up available space */
+  margin-right: 1rem;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.completed-task {
+  text-decoration: line-through;
+  color: #a0a0a0;
+}

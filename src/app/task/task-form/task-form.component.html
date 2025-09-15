@@ -3,5 +3,7 @@
     <mat-label>Agregar una nueva tarea</mat-label>
     <input matInput [(ngModel)]="newTaskName" (keyup.enter)="addTask()" />
   </mat-form-field>
-  <button mat-flat-button color="primary" (click)="addTask()">Agregar</button>
+  <button mat-flat-button color="primary" class="add-button" (click)="addTask()">
+    Agregar
+  </button>
 </div>

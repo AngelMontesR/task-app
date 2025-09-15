@@ -1,31 +1,31 @@
 <mat-list-item class="task-item">
-  <div class="task-content">
-    @if (isEditing) {
-      <mat-form-field appearance="outline" class="edit-input">
+  @if (isEditing) {
+    <div class="task-edit-mode-wrapper">
+      <mat-form-field appearance="outline" class="edit-input-field">
         <input matInput [(ngModel)]="editedTaskName" (keyup.enter)="saveChanges()" />
       </mat-form-field>
-    } @else {
-      <mat-checkbox [checked]="task.completed" (change)="onToggleCompleted()">
+      <div class="actions">
+        <button mat-icon-button (click)="saveChanges()">
+          <mat-icon>save</mat-icon>
+        </button>
+        <button mat-icon-button (click)="toggleEditMode()">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </div>
+    </div>
+  } @else {
+    <div class="task-view-mode-wrapper">
+      <mat-checkbox [checked]="task.completed" (change)="onToggleCompleted()" color="primary" class="task-checkbox">
         <span [class.completed-task]="task.completed">{{ task.name }}</span>
       </mat-checkbox>
-    }
-  </div>
-
-  <div class="actions">
-    @if (isEditing) {
-      <button mat-icon-button (click)="saveChanges()">
-        <mat-icon>save</mat-icon>
-      </button>
-      <button mat-icon-button (click)="toggleEditMode()">
-        <mat-icon>cancel</mat-icon>
-      </button>
-    } @else {
-      <button mat-icon-button (click)="toggleEditMode()">
-        <mat-icon>edit</mat-icon>
-      </button>
-      <button mat-icon-button (click)="onDelete()">
-        <mat-icon>delete</mat-icon>
-      </button>
-    }
-  </div>
+      <div class="actions">
+        <button mat-icon-button (click)="toggleEditMode()">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="onDelete()">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+  }
 </mat-list-item>
