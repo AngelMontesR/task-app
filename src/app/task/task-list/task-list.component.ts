@@ -12,13 +12,15 @@ import { SharedModule } from '../../shared/angular-material/angular-material.mod
   styleUrl: './task-list.component.css',
 })
 export class TaskListComponent implements OnInit {
-  tasks: Task[] = [];
+  pendingTasks: Task[] = [];
+  completedTasks: Task[] = [];
 
   constructor(private taskService: TaskService) {}
 
   ngOnInit(): void {
     this.taskService.tasks$.subscribe((tasks) => {
-      this.tasks = tasks;
+      this.pendingTasks = tasks.filter((task) => !task.completed);
+      this.completedTasks = tasks.filter((task) => task.completed);
     });
   }
 
@@ -28,9 +30,5 @@ export class TaskListComponent implements OnInit {
 
   onDeleteTask(id: number): void {
     this.taskService.deleteTask(id);
-  }
-
-  onUpdateTask(id: number, newName: string): void {
-    this.taskService.updateTask(id, newName);
   }
 }

@@ -1,0 +1,13 @@
+.section-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  padding: 1rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.divider {
+  border: none;
+  height: 1px;
+  background-color: #065ee2;
+}

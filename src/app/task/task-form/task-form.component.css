@@ -1,19 +1,10 @@
 .task-form-container {
-  display: flex; /* Aligns items in a row */
-  gap: 1rem; /* Creates space between the input and the button */
-  align-items: center; /* Vertically aligns the items in the center */
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   width: 100%;
-  max-width: 600px;
-  margin-bottom: 1.5rem;
 }
 
 .task-input {
-  flex-grow: 1; /* Allows the input field to take up all available space */
-}
-
-.add-button {
-  height: 56px; /* Matches the height of the mat-form-field */
-  border-radius: 50px;
-  padding: 0 1.5rem;
-  font-weight: bold;
+  flex-grow: 1;
 }

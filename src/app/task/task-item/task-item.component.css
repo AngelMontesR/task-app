@@ -24,3 +24,8 @@
   text-decoration: line-through;
   color: #a0a0a0;
 }
+
+
+.mat-mdc-form-field-infix{
+  background-color: red
+}

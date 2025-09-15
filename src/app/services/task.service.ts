@@ -1,6 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Task } from '../interfaces/task.interface';
+import { map } from 'rxjs/operators';
+
+export interface Task {
+  id: number;
+  name: string;
+  completed: boolean;
+}
 
 const LOCAL_STORAGE_KEY = 'tasks';
 
@@ -15,7 +21,6 @@ export class TaskService {
     this.loadTasksFromLocalStorage();
   }
 
-  // Carga las tareas de localStorage al iniciar el servicio
   private loadTasksFromLocalStorage(): void {
     const storedTasks = localStorage.getItem(LOCAL_STORAGE_KEY);
     if (storedTasks) {
@@ -23,7 +28,6 @@ export class TaskService {
     }
   }
 
-  // Guarda el estado actual de las tareas en localStorage
   private saveTasksToLocalStorage(): void {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(this.getTasks()));
   }
@@ -48,15 +52,6 @@ export class TaskService {
     const currentTasks = this.tasksSource.getValue();
     const updatedTasks = currentTasks.map((task) =>
       task.id === id ? { ...task, completed: !task.completed } : task
-    );
-    this.tasksSource.next(updatedTasks);
-    this.saveTasksToLocalStorage();
-  }
-
-  updateTask(id: number, newName: string): void {
-    const currentTasks = this.tasksSource.getValue();
-    const updatedTasks = currentTasks.map((task) =>
-      task.id === id ? { ...task, name: newName } : task
     );
     this.tasksSource.next(updatedTasks);
     this.saveTasksToLocalStorage();
